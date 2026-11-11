@@ -2,7 +2,9 @@
 
 Bilingual (English / ਪੰਜਾਬੀ) go-to-market website for **Tech Punjab**, a managed IT services provider (MSP) for businesses in Punjab, India.
 
-Plain static HTML/CSS/JS with no build step and no dependencies. It's ready for Cloudflare Pages.
+Plain static HTML/CSS/JS with no build step and no dependencies, served as a Cloudflare Worker (static assets).
+
+Live (temporary): https://website-techpunjab.ventacoremsp.workers.dev
 
 | URL    | Language         | File              |
 |--------|------------------|-------------------|
@@ -15,31 +17,24 @@ Do a find-and-replace across the repo (`index.html`, `pa/index.html`, `robots.tx
 
 | Placeholder                     | Replace with                                           |
 |---------------------------------|--------------------------------------------------------|
-| `910000000000`                  | Your WhatsApp/phone number: country code + number, digits only (e.g. `919812345678`) |
-| `+91 00000 00000`               | The same number, formatted for display                 |
+| `910000000000`                  | Your WhatsApp number: country code + number, digits only (e.g. `919812345678`). It's used only inside WhatsApp links and is never shown on the page. |
 | `hello@techpunjab.example`      | Your real business email                               |
-| `https://techpunjab.pages.dev`  | Your final domain (e.g. `https://techpunjab.in`)      |
+| `https://website-techpunjab.ventacoremsp.workers.dev` | Your custom domain, once you have one |
 
 Also check:
 - **Cities served** (the "Serving businesses across Punjab" section and the `areaServed` list in the JSON-LD block, on both pages). Only list cities where you can actually get an engineer on-site.
 - **Office hours** (contact section and `openingHours` in the JSON-LD block).
 - **Plan contents**: each plan's features are promises. Remove anything you don't deliver yet.
 
-## Deploy on Cloudflare Pages
+## Deploy on Cloudflare (Workers)
 
-1. Cloudflare dashboard → **Workers & Pages** → **Create** → **Pages** → **Connect to Git**.
-2. Pick the `Website-Techpunjab` repository and the branch you want to deploy.
-3. Build settings:
-   - **Framework preset:** None
-   - **Build command:** *(leave empty)*
-   - **Build output directory:** `/`
-4. **Save and Deploy**. Every push to that branch redeploys automatically.
-5. Custom domain: Pages project → **Custom domains** → add your domain.
+The site is connected as a Worker named `website-techpunjab`. `wrangler.jsonc` tells Cloudflare to serve this folder as static files:
+- `/pa/` serves `pa/index.html`
+- unknown URLs show `404.html`
+- `.assetsignore` keeps `.git`, `README.md` and config files from being published
+- `_headers` (security headers) and `_redirects` (`/en` → `/`, `/punjabi` → `/pa/`) are applied automatically
 
-Cloudflare Pages picks up these files automatically:
-- `_headers`: security headers (CSP, frame protection, etc.)
-- `_redirects`: short redirects (`/en` → `/`, `/punjabi` → `/pa/`)
-- `404.html`: bilingual not-found page
+Every push to the connected branch redeploys. To add a custom domain later, open the Worker in Cloudflare → **Settings** → **Domains & Routes** → **Add custom domain**. Then replace the workers.dev URL in the HTML, `robots.txt` and `sitemap.xml`.
 
 ## How it works
 
@@ -58,7 +53,9 @@ assets/js/main.js     Mobile menu, language memory, form → WhatsApp
 assets/js/lang.js     Redirects returning Punjabi visitors from / to /pa/
 assets/img/logo.svg   Logo / favicon
 assets/img/icons.svg  Icon sprite
-_headers, _redirects  Cloudflare Pages config
+_headers, _redirects  Cloudflare headers & redirects
+wrangler.jsonc        Cloudflare Worker config (static assets)
+.assetsignore         Files kept off the live site
 robots.txt, sitemap.xml
 ```
 

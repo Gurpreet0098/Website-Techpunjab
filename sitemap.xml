@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://techpunjab.pages.dev/</loc>
-    <xhtml:link rel="alternate" hreflang="en-IN" href="https://techpunjab.pages.dev/"/>
-    <xhtml:link rel="alternate" hreflang="pa-IN" href="https://techpunjab.pages.dev/pa/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://techpunjab.pages.dev/"/>
+    <loc>https://website-techpunjab.ventacoremsp.workers.dev/</loc>
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://website-techpunjab.ventacoremsp.workers.dev/"/>
+    <xhtml:link rel="alternate" hreflang="pa-IN" href="https://website-techpunjab.ventacoremsp.workers.dev/pa/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://website-techpunjab.ventacoremsp.workers.dev/"/>
   </url>
   <url>
-    <loc>https://techpunjab.pages.dev/pa/</loc>
-    <xhtml:link rel="alternate" hreflang="en-IN" href="https://techpunjab.pages.dev/"/>
-    <xhtml:link rel="alternate" hreflang="pa-IN" href="https://techpunjab.pages.dev/pa/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://techpunjab.pages.dev/"/>
+    <loc>https://website-techpunjab.ventacoremsp.workers.dev/pa/</loc>
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://website-techpunjab.ventacoremsp.workers.dev/"/>
+    <xhtml:link rel="alternate" hreflang="pa-IN" href="https://website-techpunjab.ventacoremsp.workers.dev/pa/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://website-techpunjab.ventacoremsp.workers.dev/"/>
   </url>
 </urlset>

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://techpunjab.pages.dev/sitemap.xml
+Sitemap: https://website-techpunjab.ventacoremsp.workers.dev/sitemap.xml
